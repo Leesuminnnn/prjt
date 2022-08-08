@@ -6,8 +6,9 @@
 
 	<typeAliases>
 	 	
-		<!-- <typeAlias alias="zzimVo" type="com.spring.prj.vo.*"/> -->
-
+		<typeAlias alias="boardVo" type="com.spring.prj.vo.BoardVo"/>
+		<typeAlias alias="memberVo" type="com.spring.prj.vo.MemberVo"/>
+		
 	</typeAliases>  
 
 </configuration>  
