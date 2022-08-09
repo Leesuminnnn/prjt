@@ -77,16 +77,16 @@
 	</update>
 	
 	
-	<!-- <update id="delete">
+	<update id="delete">
 		
-		update board set delyn='Y' where bidx=#{bidx}
+		update notice set delyn='Y' where bidx=#{bidx}
 		
 	</update>
 	<select id="file_info" resultType="String">
-		select filename from board
+		select filename from notice
 	where bidx=#{bidx}
 	
-	</select> -->
+	</select>
 	
 	
 </mapper>

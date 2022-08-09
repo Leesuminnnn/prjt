@@ -40,7 +40,12 @@ public class BoardDao {
 		return sqlSession.selectOne(MAPPER+".View", vo);
 	}
 	public void update(BoardVo vo) { 
-		 
 		 sqlSession.update(MAPPER+".update", vo);
+	}
+	public String file_info(int bidx) {
+		return sqlSession.selectOne(MAPPER+".file_info",bidx);
+	}
+	public void delete(int bidx) {
+		sqlSession.delete(MAPPER+".delete", bidx);
 	}
 }

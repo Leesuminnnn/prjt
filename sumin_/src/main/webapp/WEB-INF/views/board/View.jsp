@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Write</title>
+<title>View</title>
 <script src="https://kit.fontawesome.com/6c060c00b1.js"
 	crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -23,12 +23,20 @@
 </head>
 <script>
 	$(function() {
-		$("#modi")
-				.click(
-						function() {
-							location
-									.replace('${pageContext.request.contextPath}/board/Modify.do/${vo.bidx}?page=${pageMaker.cri.page}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}');
-						});
+		$("#modi").click(function() {
+			location.replace('${pageContext.request.contextPath}/board/Modify.do/${vo.bidx}?page=${pageMaker.cri.page}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}');
+		});
+	});
+	$(function(){
+		$("#del").click(function(){
+			var result = confirm("삭제하시겠습니까?");
+			
+			if(result){
+				location.replace('${pageContext.request.contextPath}/board/Delete.do/${vo.bidx}');
+			}else{
+				
+			}
+		});
 	});
 </script>
 <body class="text-center">
@@ -91,6 +99,7 @@
 					<input class="btn btn-outline-secondary" type="button" value="돌아가기"
 						onclick="location.href='${pageContext.request.contextPath}/board/List.do'" />
 					<button class="btn btn-outline-secondary" id="modi">수정하기</button>
+					<button class="btn btn-outline-secondary" id="del">삭제하기</button>
 				</div>
 			</div>
 			<div class="col-2"></div>
