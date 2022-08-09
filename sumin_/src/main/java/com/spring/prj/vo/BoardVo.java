@@ -2,6 +2,8 @@ package com.spring.prj.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVo {
 
 	
@@ -11,9 +13,24 @@ public class BoardVo {
 	private String member_id;
 	private String delyn;
 	private Date regdate;
+	private MultipartFile files;
+	private String filename;
 	
 	
 	
+	
+	public MultipartFile getFiles() {
+		return files;
+	}
+	public void setFiles(MultipartFile files) {
+		this.files = files;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	public String getDelyn() {
 		return delyn;
 	}

@@ -5,20 +5,20 @@
 <mapper namespace = "board">
 
 	<!-- 동적 SQL문으로 처리: choose-when-otherwise 구문 -->
-<!-- 	<insert id="insert" parameterType="boardVo">
+ 	<insert id="insert" parameterType="boardVo">
 		
 			insert into notice(
-						title, content, member_id)
-					values(#{title}, #{content}, #{member_id})	
+						title, content, member_id, filename)
+					values(#{title}, #{content}, #{member_id}, #{filename})	
 			
-	</insert> -->
+	</insert>
 	
 	<select id="list" resultType="boardVo">
 		select * from notice where delyn='N' order by bidx desc
 	</select>	
 	
 	
-	<!-- <select id="BoardListCnt" resultType="int">
+	<select id="BoardListCnt" resultType="int">
 		select count(*) from notice where delyn='N'
 		  
 		
@@ -34,25 +34,12 @@
 		
 	order by bidx desc
 	</select>
-	 -->
 	
-	<!-- <select id="Boardlist" resultType="hashmap" parameterType="hashmap">
+	<select id="Boardlist" resultType="hashmap" parameterType="hashmap">
 		
 		
 		
-		select * from notice 
-		<choose>
-			<when test="ct_idx == 0">	공지사항
-				where delyn='N' and ct_idx='0' 
-			</when>
-			<when test="ct_idx == 1">	qna
-				where delyn='N' and ct_idx='1'
-			</when>
-			<when test="ct_idx == 2">	1:1문의
-				 a, dq_ct b where a.dq_ct_idx=b.dq_ct_idx and delyn='N' and ct_idx='2'
-			</when>
-		</choose>
-
+		select * from notice where delyn='N'
 		<if test="type == 'title' and keyword != null">
 			and title like concat('%',#{keyword},'%')
 		</if>
@@ -63,13 +50,11 @@
 			and ((title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%')))
 		</if>
 		
-		order by bidx desc
-		  
-		limit #{pageStart},#{perPageNum}
+		order by bidx desc limit #{pageStart},#{perPageNum}
 		
 	
 	
-	</select> -->
+	</select>
 	
 	
 	
@@ -84,15 +69,15 @@
 	
 	
 	
-	<!-- <update id="update">
+	<update id="update">
 		
-		update board SET title=#{title}, content=#{content}, bidx=#{bidx},ct_idx=#{ct_idx},filename=#{filename} where bidx=#{bidx}
+		update notice SET title=#{title}, content=#{content}, bidx=#{bidx},filename=#{filename} where bidx=#{bidx}
 		
 		
 	</update>
 	
 	
-	<update id="delete">
+	<!-- <update id="delete">
 		
 		update board set delyn='Y' where bidx=#{bidx}
 		
