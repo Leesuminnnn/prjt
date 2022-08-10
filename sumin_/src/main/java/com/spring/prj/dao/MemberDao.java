@@ -33,4 +33,7 @@ public class MemberDao {
 		return sqlSession.selectOne(MAPPER+".login",vo);
 	}
 	
+	public int checkId(String id) {
+		return sqlSession.selectOne(MAPPER+".checkId", id);
+	}
 }
