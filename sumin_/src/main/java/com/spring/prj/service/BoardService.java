@@ -47,7 +47,13 @@ public class BoardService {
 	}
 	
 	//글수정
-		public void update(BoardVo vo) {
-			boardDao.update(vo);
-		}
+	public void update(BoardVo vo) {
+		boardDao.update(vo);
+	}
+	public String file_info(int bidx) {
+		return boardDao.file_info(bidx);
+	}
+	public void delete(Integer bidx) {
+		boardDao.delete(bidx);
+	}
 }

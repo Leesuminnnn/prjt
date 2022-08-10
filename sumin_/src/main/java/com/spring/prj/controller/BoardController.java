@@ -177,4 +177,27 @@ public class BoardController {
 		return "redirect:/board/List.do";
 		
 	}
+	
+	@RequestMapping("Delete.do/{bidx}")
+	public String Delete(@PathVariable("bidx") Integer bidx,HttpServletRequest request, BoardVo vo) {
+						
+		System.out.println("###################삭제 페이지");
+		
+		String filename = boardService.file_info(bidx);
+		
+		if(filename != null && !filename.equals("-")) {
+			ServletContext application = request.getSession().getServletContext();
+			String path = application.getRealPath("/resources/images/");
+			File f = new File(path+filename);
+			
+			if(f.exists())
+				f.delete();
+		}
+		
+		
+		
+		boardService.delete(bidx);
+		
+		return "redirect:/board/List.do";
+		}
 }
